@@ -1,0 +1,6 @@
+_name = Partner
+_description = The first Pokémon of your own team follows the player around (not in HeartGold/SoulSilver, where it already does).
+
+# Player menu
+show = Show partner
+no_game = Game without a Pokémon overworld or HeartGold/SoulSilver

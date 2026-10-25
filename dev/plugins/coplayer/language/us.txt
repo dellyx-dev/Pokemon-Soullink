@@ -1,0 +1,11 @@
+_name = Other players
+_description = The other players in your own world: their first Pokémon (or a marker in their player colour) on the tile they are standing on.
+
+# Player menu
+show = Show other players
+no_partner = no other player in the same world
+
+# Main menu
+display = Display
+display_pokemon = Pokémon
+display_stylus = Marker

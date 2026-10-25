@@ -1,0 +1,14 @@
+_name = Pokédex
+_description = “Pokédex” tab in the overlay: every Pokémon of your own randomized ROM with types, stats, evolutions and level-up moves – sorted by no. or A–Z, with search.
+
+# Tab
+tab = Pokédex
+tab_short = DEX
+
+# List and details
+loads = Loading the Pokédex of your ROM …
+details = Details
+letter = Letter
+after_nr = By no.
+a_z = A–Z
+before_back = Previous / Next

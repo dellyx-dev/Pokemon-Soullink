@@ -1,0 +1,6 @@
+_name = Partner
+_description = Das erste Pokémon aus dem eigenen Team läuft dem Spieler hinterher (nicht in HeartGold/SoulSilver, dort tut es das schon).
+
+# Spielermenü
+show = Partner zeigen
+no_game = Spiel ohne Pokémon-Welt oder HeartGold/SoulSilver

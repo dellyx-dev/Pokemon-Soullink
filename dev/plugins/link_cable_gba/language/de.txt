@@ -1,0 +1,8 @@
+_name = Linkkabel GBA
+_description = Linkkabel zwischen den GBA-Spielern: tauschen und kämpfen im Kabel-Club. Alle GBA-Spieler einer Sitzung laufen dafür in einem gemeinsamen Prozess.
+
+# Spielermenü
+cable = Linkkabel
+plugged_in = Linkkabel eingesteckt – verbunden mit allen, die es auch eingesteckt haben
+pulled = Linkkabel gezogen
+no_fast_forward = Mit Linkkabel geht kein Vorspulen

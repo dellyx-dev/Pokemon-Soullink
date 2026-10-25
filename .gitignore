@@ -1,0 +1,21 @@
+# Builds
+/build/
+/release/
+dev/build/
+dev/.venv/
+dev/local/
+
+# Runtime data of runs from source (data folder = dev/)
+dev/sessions/
+dev/presets/
+dev/sound/
+dev/roms/
+dev/settings.json*
+dev/profile.json*
+dev/controller-bindings.json*
+dev/error.log
+dev/selftest.txt
+
+__pycache__/
+.pytest_cache/
+*.tmp

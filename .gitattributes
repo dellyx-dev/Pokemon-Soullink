@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.dll binary
+*.jar binary
+*.rnqs binary
+
+# Not part of the public GitHub state (git archive)
+CLAUDE.md export-ignore
+docs/claude export-ignore
+docs/claude/** export-ignore

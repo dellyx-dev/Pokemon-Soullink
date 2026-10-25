@@ -1,0 +1,11 @@
+_name = Hello
+_description = Example plugin: says hello in the player menu, shows a tab and the play time in the free field.
+greet = Say hello
+hello = Hello!
+hello_loud = HELLO!
+loud = Say it loud
+tab = Hello
+tab_short = HEL
+greeted = greeted {count} times
+display = Play time in minutes
+minutes = {minutes} minutes played

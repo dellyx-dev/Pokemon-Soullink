@@ -1,0 +1,434 @@
+# Pokemon-Soullink – English
+# Format: key = text, {name} = placeholder. File name = country code; _name = name in the language selection.
+_name = English
+
+# General: button hints and common words
+hint.select = Select
+hint.back = Back
+hint.close = Close
+hint.change = Change
+hint.done = Done
+hint.cancel = Cancel
+hint.next = Continue
+hint.page = Page
+hint.ten_next = Skip 10
+general.back = Back
+general.yes = Yes
+general.no = No
+general.next = Continue
+view.hybrid = Hybrid
+view.columns = Columns
+
+# Controller buttons by position (Xbox labels)
+key.south = bottom button (Xbox A)
+key.east = right button (Xbox B)
+key.west = left button (Xbox X)
+key.north = top button (Xbox Y)
+key.l = L
+key.r = R
+key.l2 = L2 (trigger)
+key.r2 = R2 (trigger)
+key.stick_l = L3 (press stick)
+key.stick_r = R3 (press stick)
+key.start = Start
+key.select = Select
+key.up = D-pad up
+key.down = D-pad down
+key.left = D-pad left
+key.right = D-pad right
+
+# Functions when remapping (A/B/X/Y/L/R are called GBA-A, DS-X …)
+function.start = Start
+function.select = Select
+function.up = Up
+function.down = Down
+function.left = Left
+function.right = Right
+function.fast_forward = Fast-forward on/off
+function.menu = Menu / Types (hold)
+function.swap = Swap screens
+function.touch = Tap touch screen
+
+# Keyboard keys
+keyboard.space = Space
+keyboard.return = Enter
+keyboard.backspace = Backspace
+keyboard.tab = Tab
+keyboard.escape = Esc
+keyboard.up = Arrow up
+keyboard.down = Arrow down
+keyboard.left = Arrow left
+keyboard.right = Arrow right
+keyboard.left_shift = Left Shift
+keyboard.right_shift = Right Shift
+keyboard.left_ctrl = Left Ctrl
+keyboard.right_ctrl = Right Ctrl
+keyboard.left_alt = Alt
+keyboard.right_alt = Alt Gr
+keyboard.caps_lock = Caps Lock
+keyboard.delete = Delete
+keyboard.insert = Insert
+keyboard.home = Home
+keyboard.end = End
+keyboard.page_up = Page Up
+keyboard.page_down = Page Down
+keyboard.enter = Enter (numpad)
+keyboard.numpad = Numpad {key}
+keyboard.key = Key {code}
+
+# Types (name and abbreviation)
+type.normal = Normal
+type.fire = Fire
+type.water = Water
+type.grass = Grass
+type.electric = Electric
+type.ice = Ice
+type.fighting = Fighting
+type.poison = Poison
+type.ground = Ground
+type.flying = Flying
+type.psychic = Psychic
+type.bug = Bug
+type.rock = Rock
+type.ghost = Ghost
+type.dragon = Dragon
+type.dark = Dark
+type.steel = Steel
+type_short.normal = NOR
+type_short.fire = FIR
+type_short.water = WAT
+type_short.grass = GRA
+type_short.electric = ELE
+type_short.ice = ICE
+type_short.fighting = FIG
+type_short.poison = POI
+type_short.ground = GRO
+type_short.flying = FLY
+type_short.psychic = PSY
+type_short.bug = BUG
+type_short.rock = ROC
+type_short.ghost = GHO
+type_short.dragon = DRA
+type_short.dark = DAR
+type_short.steel = STE
+
+# Pokédex data from the ROM
+dex.location = Location #{id}
+dex.item = Item #{nr}
+dex.move = Move #{nr}
+dex.format = Unknown dex format: {format}
+dex.java_missing = Java missing – please install it
+dex.not_startable = Could not start the Pokédex helper ({java}): {error}
+dex.failed = Pokédex helper failed
+# Evolutions
+evo.level = Lv. {level}
+evo.level_slot = Lv. {level}, free party slot
+evo.level_attack_higher = Lv. {level}, Atk > Def
+evo.level_defense_higher = Lv. {level}, Atk < Def
+evo.level_equal = Lv. {level}, Atk = Def
+evo.level_random = Lv. {level} (random)
+evo.level_male = Lv. {level} (male)
+evo.level_female = Lv. {level} (female)
+evo.level_day = Lv. {level} (day)
+evo.level_night = Lv. {level} (night)
+evo.beauty = High Beauty
+evo.stone = {item}
+evo.stone_male = {item} (male)
+evo.stone_female = {item} (female)
+evo.trade = Trade
+evo.trade_item = Trade holding {item}
+evo.trade_partner = Trade for a partner Pokémon
+evo.friendship = Friendship
+evo.friendship_day = Friendship (day)
+evo.friendship_night = Friendship (night)
+evo.item_day = Level up holding {item} (day)
+evo.item_night = Level up holding {item} (night)
+evo.move = Level up knowing {move}
+evo.partner = Level up with {pokemon} in the party
+evo.electrified_area = Level up at a magnetic field
+evo.moss_rock = Level up at the Moss Rock
+evo.icy_rock = Level up at the Ice Rock
+evo.special = Special evolution
+
+# Editions (by ROM code without the region letter)
+game.AXV = Ruby
+game.AXP = Sapphire
+game.BPE = Emerald
+game.BPR = FireRed
+game.BPG = LeafGreen
+game.ADA = Diamond
+game.APA = Pearl
+game.CPU = Platinum
+game.IPK = HeartGold
+game.IPG = SoulSilver
+game.IRB = Black
+game.IRA = White
+game.IRE = Black 2
+game.IRD = White 2
+
+randomizer.unknown = Unknown error
+randomizer.not_startable = Could not start the randomizer ({java}): {error}
+
+session.mixed = Mixed
+session.unreadable = No readable {file} in {dir}
+
+# Main menu
+start.new_session = New session
+start.resume = Continue session
+start.settings = Settings
+start.end = Quit
+start.subtitle = Couch Soullink for up to 4 players
+start.of = by {author}
+start.question_end = Quit the program?
+start.yes_end = Yes, quit
+start.about = About
+# Trademark notice (main menu and About)
+mark.row1 = Pokémon is a registered trademark of Nintendo, Creatures Inc. and GAME FREAK inc.
+mark.row2 = Unofficial fan project, not affiliated with or endorsed by Nintendo, The Pokémon Company, Creatures or GAME FREAK. No games are included.
+
+# Settings
+once.title = Settings
+once.group_general = General
+once.group_game = Game
+once.group_dir = Folders
+once.status_games = {count} games
+once.status_games_1 = 1 game
+once.status_presets = {count} presets
+once.status_presets_1 = 1 preset
+once.status_sessions = {count} sessions
+once.status_sessions_1 = 1 session
+once.status_title = {count} tracks
+once.status_title_1 = 1 track
+once.status_empty = empty
+once.status_missing = Folder missing
+once.language = Language
+once.gba_roms = GBA ROMs
+once.nds_roms = NDS ROMs
+once.presets = Randomizer presets
+once.sessions = Sessions
+once.music_dir = Music folder
+once.music_volume = Music
+once.percent = {percent} %
+once.fast_forward = Fast-forward
+once.fast_forward_value = {factor}× speed
+once.autosave = Autosave
+once.autosave_value = every {minutes} min
+once.ds_view = DS view
+once.data_dir = Data folder
+once.data_dir_restart = The data folder applies after the next start
+once.dir_choose = Choose folder
+once.free_field = Free panel
+once.field_session = Session
+once.field_alternating = Rotating
+once.group_plugins = Plugins
+once.plugin_mark = PLUGIN
+once.on_off = On/Off
+once.plugin_incompatible = incompatible
+once.plugin_incompatible_text = Built for plugin API {api}, this program has API {expected}
+once.plugin_broken = broken
+once.plugin_broken_text = plugin.json is missing or invalid
+once.plugin_broken_id = Folder name is not a valid plugin ID (only a–z, 0–9 and _)
+once.plugin_error = Error
+once.plugin_error_text = Could not be loaded – details in error.log
+# Folder picker
+dir.take = Use this folder
+dir.up = .. (one level up)
+dir.no_access = (no access)
+dir.drives = Drives
+dir.open_take = Open / Use
+dir.this = This folder
+
+# Continue session
+resume.title = Continue session
+resume.count_one = 1 saved session
+resume.count = {count} saved sessions
+resume.no = No saved sessions yet.
+resume.delete = Delete
+resume.delete_title = Delete “{name}”?
+resume.delete_text = Type {word} to delete. The session's saves will be gone.
+resume.delete_wrong = Not deleted: please type exactly {word}.
+resume.delete_error = Could not delete: {error}
+resume.resume = Continue
+resume.rom_missing = ROM missing: {file}
+resume.playtime = {hours}:{minutes} h
+resume.details = {games}  ·  {count} players  ·  {playtime}  ·  last played {day}
+
+# New session
+new.title = New session
+new.subtitle = Players, games and randomizer
+new.player = Players
+new.player_name = Player name
+new.player_nr = Player {nr}
+new.randomizer = Randomizer
+new.without_randomizer = No randomizer
+new.name = Name
+new.los = Let's go!
+new.no_roms = No Pokémon ROMs found in
+new.edit_los = Edit / Go
+new.preview = Preview
+
+# Randomizing
+randomize.title = Randomizing
+randomize.title_without = Preparing ROMs
+randomize.player = Player {nr}  ·  {game}
+randomize.runs = running …
+randomize.done = done
+randomize.done_seed = done  ·  Seed {seed}
+randomize.error = Error: {message}
+randomize.missing = Randomizer missing ({jar})
+randomize.java_missing = Java missing – please install it (Java 8 or newer, 64-bit, adoptium.net)
+randomize.again = Try again
+randomize.other_game = Other game
+
+# Assign controllers
+assignment.press = Press
+assignment.waits = waiting …
+assignment.join = Join
+assignment.profile = Profile
+assignment.default = Default
+assignment.new_profile = + New profile
+assignment.create = Create
+assignment.ready = Ready
+assignment.not_ready = Not ready
+assignment.bind = Customize
+assignment.profile_name = Name of the new profile
+assignment.profile_example = e.g. Dellyx
+assignment.last = last used
+assignment.delete = Delete
+assignment.delete_question = Delete “{name}”?
+assignment.delete_sure = Do you really want to delete this profile?
+assignment.undo = Undo
+# Setup wizard for unknown controllers
+wizard.title = Set up controller
+wizard.press = Press:
+wizard.applies_for_all = Applies to all controllers of this type afterwards
+wizard.up = D-pad up
+wizard.down = D-pad down
+wizard.left = D-pad left
+wizard.right = D-pad right
+wizard.south = bottom button (A)
+wizard.east = right button (B)
+wizard.west = left button
+wizard.north = top button
+wizard.l = left shoulder (L)
+wizard.r = right shoulder (R)
+wizard.start = Start
+wizard.select = Select
+
+# Remap buttons
+keys.title = Remap buttons
+keys.group_game = Game buttons
+keys.group_cross = D-pad
+keys.group_extra = Extras
+keys.title_keyboard = Remap keyboard
+keys.title_profile = Edit profile “{name}”
+keys.default = Restore defaults
+keys.free = – unassigned –
+keys.press_now = Now press the button for
+keys.without_press = Without a key press the old mapping stays
+
+# Overlay: tabs (full and as abbreviation when space is tight)
+tab.types = Types
+tab_short.types = TYP
+# Type chart
+overlay.against = vs.
+overlay.column = Column
+table.1 = 1× normal
+table.2 = super effective
+table.05 = not very effective
+table.0 = no effect
+# Labels on button symbols
+button.top = UP
+button.up = UP
+button.down = DOWN
+button.left = LEFT
+button.right = RIGHT
+
+# Pokémon details (building blocks for plugin tabs)
+dex.no_data = No Pokédex data for this Pokémon
+dex.missing = Pokédex data missing: {error}
+dex.loads = Loading Pokédex data …
+dex.evolved_to = Evolves into {targets}
+dex.evolved_not = Does not evolve further
+dex.sum = (Total {sum})
+dex.lv = Lv {level}
+dex.start = Start
+gender.m = (M)
+gender.w = (F)
+value.kp = HP
+value.ang = Atk
+value.vertical = Def
+value.spang = SpA
+value.spvert = SpD
+value.init = Spe
+
+# Player menu
+menu.audio = Game
+menu.cross = Touch with D-pad
+menu.all = all
+menu.from = off
+menu.group_audio = Sound
+menu.group_screen = Screen
+menu.group_more = More
+menu.music = Music
+menu.view = View
+menu.swap = Swap screens
+menu.overlay = Overlay
+menu.plugins = Plugins
+menu.plugins_inactive = Not active
+menu.new_bind = Remap
+menu.save = Save
+menu.controller_switch = Switch controller
+menu.question_profile = Default profile – create a new one?
+menu.question_save = Save & quit?
+# Pause menu (Esc)
+# In game
+game.controller_applied = Controller taken over: {name}
+game.new_started = Restarted from the last autosave
+game.backup_loaded = Backup state loaded
+game.ingame_start = Started from the in-game save
+game.fast_forward_locked = Fast-forward is blocked right now
+plugin.error_session = {name}: error – plugin off
+plugin.fits_not = does not fit this session
+plugin.error_reason = error – off for this session
+game.starts = Starting …
+game.crashed = Crashed
+game.crashed_hint = Press A: restart from the last autosave
+game.controller_separated = Controller disconnected
+game.free_controller = Press A on a free controller
+game.save = Saving …
+game.top_large = top large
+game.bottom_large = bottom large
+game.swap = swap
+game.touch_cross = Touch: D-pad
+game.playtime = Play time {hours}:{minutes}
+
+# About
+about.title = About {name}
+about.author = A couch Soullink by {author}
+about.software = Third-party software
+about.license_texts = Press A for the license text · all texts are also in the "licenses" folder next to the program
+about.license_show = Show license
+about.license_missing = License text not found: {file}
+about.page = Scroll
+about.purpose_gba = GBA emulation
+about.purpose_nds = NDS emulation
+about.purpose_randomizer = Randomizer and Pokédex data
+about.purpose_python = Programming language
+about.purpose_pygame = Window, input, sound
+about.purpose_numpy = Graphics and sound
+about.purpose_load_font = Font
+about.plugins = Plugins
+about.plugin_version = Version {version}
+about.plugin_author = by {author}
+about.plugin_header = Plugin · version {version} · by {author}
+
+# On-screen keyboard and search
+osk.tap = Type
+osk.delete = Delete
+osk.empty = Space
+osk.large = Shift
+osk.search = Search
+osk.search_placeholder = Search
+osk.hit = {count} results
+osk.no_hit = No results

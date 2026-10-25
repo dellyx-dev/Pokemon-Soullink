@@ -1,0 +1,28 @@
+_name = Gegner
+_description = Reiter „Gegner“ im Overlay: das gegnerische Pokémon im laufenden Kampf, live aus dem Spiel, mit der Wirkung aller Angriffstypen und „Stark gegen“; ohne Kampf 1–2 Typen von Hand.
+
+# Reiter
+tab = Gegner
+tab_short = GEG
+
+# Kampf
+no_battle = Aktuell in keinem Kampf
+battle_loads = Kampf läuft – Pokédex-Daten werden geladen …
+battle_error = Kampf läuft – Pokédex-Daten fehlen: {error}
+lv = Lv {level}
+defeated = besiegt
+attacken_are = Attacken dieser Typen sind …
+not_send = Nicht schicken
+not_send_reason = {name} trifft sie sehr effektiv
+
+# Typen von Hand
+of_hand = Typen von Hand:
+type = Typ
+first_second = 1./2. Typ
+
+# Wirkung
+level_4 = sehr effektiv
+level_2 = effektiv
+level_05 = nicht sehr effektiv
+level_025 = kaum effektiv
+level_0 = wirkungslos

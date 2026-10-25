@@ -1,0 +1,434 @@
+# Pokemon-Soullink – Deutsch (Referenzsprache)
+# Format: schluessel = Text, {name} = Platzhalter. Dateiname = Länderkürzel; _name = Name in der Sprachauswahl.
+_name = Deutsch
+
+# Allgemein: Knopf-Hinweise und Wörter, die überall vorkommen
+hint.select = Auswählen
+hint.back = Zurück
+hint.close = Schließen
+hint.change = Ändern
+hint.done = Fertig
+hint.cancel = Abbrechen
+hint.next = Weiter
+hint.page = Seite
+hint.ten_next = 10 weiter
+general.back = Zurück
+general.yes = Ja
+general.no = Nein
+general.next = Weiter
+view.hybrid = Hybrid
+view.columns = Spalten
+
+# Controller-Tasten nach Position (Aufdruck Xbox-Layout)
+key.south = untere Taste (Xbox A)
+key.east = rechte Taste (Xbox B)
+key.west = linke Taste (Xbox X)
+key.north = obere Taste (Xbox Y)
+key.l = L
+key.r = R
+key.l2 = L2 (Trigger)
+key.r2 = R2 (Trigger)
+key.stick_l = L3 (Stick drücken)
+key.stick_r = R3 (Stick drücken)
+key.start = Start
+key.select = Select
+key.up = Steuerkreuz hoch
+key.down = Steuerkreuz runter
+key.left = Steuerkreuz links
+key.right = Steuerkreuz rechts
+
+# Funktionen beim Tasten-Belegen (A/B/X/Y/L/R heißen GBA-A, DS-X …)
+function.start = Start
+function.select = Select
+function.up = Hoch
+function.down = Runter
+function.left = Links
+function.right = Rechts
+function.fast_forward = Vorspulen an/aus
+function.menu = Menü / Typen (halten)
+function.swap = Bildschirme tauschen
+function.touch = Touch tippen
+
+# Tastatur-Tasten
+keyboard.space = Leertaste
+keyboard.return = Enter
+keyboard.backspace = Rücktaste
+keyboard.tab = Tab
+keyboard.escape = Esc
+keyboard.up = Pfeil hoch
+keyboard.down = Pfeil runter
+keyboard.left = Pfeil links
+keyboard.right = Pfeil rechts
+keyboard.left_shift = Shift links
+keyboard.right_shift = Shift rechts
+keyboard.left_ctrl = Strg links
+keyboard.right_ctrl = Strg rechts
+keyboard.left_alt = Alt
+keyboard.right_alt = Alt Gr
+keyboard.caps_lock = Feststell
+keyboard.delete = Entf
+keyboard.insert = Einfg
+keyboard.home = Pos1
+keyboard.end = Ende
+keyboard.page_up = Bild hoch
+keyboard.page_down = Bild runter
+keyboard.enter = Enter (Ziffernblock)
+keyboard.numpad = Ziffernblock {key}
+keyboard.key = Taste {code}
+
+# Typen (Name und Kürzel)
+type.normal = Normal
+type.fire = Feuer
+type.water = Wasser
+type.grass = Pflanze
+type.electric = Elektro
+type.ice = Eis
+type.fighting = Kampf
+type.poison = Gift
+type.ground = Boden
+type.flying = Flug
+type.psychic = Psycho
+type.bug = Käfer
+type.rock = Gestein
+type.ghost = Geist
+type.dragon = Drache
+type.dark = Unlicht
+type.steel = Stahl
+type_short.normal = NOR
+type_short.fire = FEU
+type_short.water = WAS
+type_short.grass = PFL
+type_short.electric = ELE
+type_short.ice = EIS
+type_short.fighting = KAM
+type_short.poison = GIF
+type_short.ground = BOD
+type_short.flying = FLU
+type_short.psychic = PSY
+type_short.bug = KÄF
+type_short.rock = GES
+type_short.ghost = GEI
+type_short.dragon = DRA
+type_short.dark = UNL
+type_short.steel = STA
+
+# Pokédex-Daten aus der ROM
+dex.location = Ort #{id}
+dex.item = Item #{nr}
+dex.move = Move #{nr}
+dex.format = Unbekanntes dex-Format: {format}
+dex.java_missing = Java fehlt – bitte installieren
+dex.not_startable = Pokédex-Helfer nicht startbar ({java}): {error}
+dex.failed = Pokédex-Helfer fehlgeschlagen
+# Entwicklungen
+evo.level = Lv. {level}
+evo.level_slot = Lv. {level}, freier Platz im Team
+evo.level_attack_higher = Lv. {level}, Ang > Vert
+evo.level_defense_higher = Lv. {level}, Ang < Vert
+evo.level_equal = Lv. {level}, Ang = Vert
+evo.level_random = Lv. {level} (Zufall)
+evo.level_male = Lv. {level} (männlich)
+evo.level_female = Lv. {level} (weiblich)
+evo.level_day = Lv. {level} (Tag)
+evo.level_night = Lv. {level} (Nacht)
+evo.beauty = Hohe Schönheit
+evo.stone = {item}
+evo.stone_male = {item} (männlich)
+evo.stone_female = {item} (weiblich)
+evo.trade = Tausch
+evo.trade_item = Tausch mit {item}
+evo.trade_partner = Tausch gegen Partner-Pokémon
+evo.friendship = Freundschaft
+evo.friendship_day = Freundschaft (Tag)
+evo.friendship_night = Freundschaft (Nacht)
+evo.item_day = Level-Up mit {item} (Tag)
+evo.item_night = Level-Up mit {item} (Nacht)
+evo.move = Level-Up mit {move}
+evo.partner = Level-Up mit {pokemon} im Team
+evo.electrified_area = Level-Up am Magnetfeld
+evo.moss_rock = Level-Up am Moosfelsen
+evo.icy_rock = Level-Up am Eisfelsen
+evo.special = Sonderentwicklung
+
+# Editionen (nach ROM-Code ohne Länderbuchstaben)
+game.AXV = Rubin
+game.AXP = Saphir
+game.BPE = Smaragd
+game.BPR = Feuerrot
+game.BPG = Blattgrün
+game.ADA = Diamant
+game.APA = Perl
+game.CPU = Platin
+game.IPK = HeartGold
+game.IPG = SoulSilver
+game.IRB = Schwarz
+game.IRA = Weiß
+game.IRE = Schwarz 2
+game.IRD = Weiß 2
+
+randomizer.unknown = Unbekannter Fehler
+randomizer.not_startable = Randomizer nicht startbar ({java}): {error}
+
+session.mixed = Gemischt
+session.unreadable = Keine lesbare {file} in {dir}
+
+# Hauptmenü
+start.new_session = Neue Sitzung
+start.resume = Sitzung fortsetzen
+start.settings = Einstellungen
+start.end = Beenden
+start.subtitle = Couch-Soullink für bis zu 4 Spieler
+start.of = von {author}
+start.question_end = Programm beenden?
+start.yes_end = Ja, beenden
+start.about = Über
+# Markenhinweis (Hauptmenü und „Über“)
+mark.row1 = Pokémon ist eine eingetragene Marke von Nintendo, Creatures Inc. und GAME FREAK inc.
+mark.row2 = Inoffizielles Fanprojekt ohne Verbindung zu Nintendo, The Pokémon Company, Creatures oder GAME FREAK. Es werden keine Spiele mitgeliefert.
+
+# Einstellungen
+once.title = Einstellungen
+once.group_general = Allgemein
+once.group_game = Spiel
+once.group_dir = Ordner
+once.status_games = {count} Spiele
+once.status_games_1 = 1 Spiel
+once.status_presets = {count} Presets
+once.status_presets_1 = 1 Preset
+once.status_sessions = {count} Sitzungen
+once.status_sessions_1 = 1 Sitzung
+once.status_title = {count} Titel
+once.status_title_1 = 1 Titel
+once.status_empty = leer
+once.status_missing = Ordner fehlt
+once.language = Sprache
+once.gba_roms = GBA-ROMs
+once.nds_roms = NDS-ROMs
+once.presets = Randomizer-Presets
+once.sessions = Sitzungen
+once.music_dir = Musik-Ordner
+once.music_volume = Musik
+once.percent = {percent} %
+once.fast_forward = Vorspulen
+once.fast_forward_value = {factor}× so schnell
+once.autosave = Autosave
+once.autosave_value = alle {minutes} min
+once.ds_view = DS-Ansicht
+once.data_dir = Datenordner
+once.data_dir_restart = Datenordner gilt nach dem nächsten Start
+once.dir_choose = Ordner wählen
+once.free_field = Freies Feld
+once.field_session = Sitzung
+once.field_alternating = Abwechselnd
+once.group_plugins = Plugins
+once.plugin_mark = PLUGIN
+once.on_off = An/Aus
+once.plugin_incompatible = inkompatibel
+once.plugin_incompatible_text = Gebaut für Plugin-API {api}, dieses Programm hat API {expected}
+once.plugin_broken = kaputt
+once.plugin_broken_text = plugin.json fehlt oder ist ungültig
+once.plugin_broken_id = Ordnername ist keine gültige Plugin-ID (nur a–z, 0–9 und _)
+once.plugin_error = Fehler
+once.plugin_error_text = Konnte nicht geladen werden – Details in error.log
+# Ordnerwahl
+dir.take = Diesen Ordner nehmen
+dir.up = .. (eine Ebene hoch)
+dir.no_access = (kein Zugriff)
+dir.drives = Laufwerke
+dir.open_take = Öffnen / Nehmen
+dir.this = Diesen Ordner
+
+# Sitzung fortsetzen
+resume.title = Sitzung fortsetzen
+resume.count_one = 1 gespeicherte Sitzung
+resume.count = {count} gespeicherte Sitzungen
+resume.no = Noch keine Sitzungen gespeichert.
+resume.resume = Fortsetzen
+resume.delete = Löschen
+resume.delete_title = „{name}“ löschen?
+resume.delete_text = Zum Löschen {word} eingeben. Die Spielstände der Sitzung sind dann weg.
+resume.delete_wrong = Nicht gelöscht: bitte genau {word} eingeben.
+resume.delete_error = Löschen fehlgeschlagen: {error}
+resume.rom_missing = ROM fehlt: {file}
+resume.playtime = {hours}:{minutes} h
+resume.details = {games}  ·  {count} Spieler  ·  {playtime}  ·  zuletzt {day}
+
+# Neue Sitzung
+new.title = Neue Sitzung
+new.subtitle = Spieler, Spiele und Randomizer
+new.player = Spieler
+new.player_nr = Spieler {nr}
+new.player_name = Name des Spielers
+new.randomizer = Randomizer
+new.without_randomizer = Ohne Randomizer
+new.name = Name
+new.los = Los geht's!
+new.no_roms = Keine Pokémon-ROMs gefunden in
+new.edit_los = Bearbeiten / Los
+new.preview = Vorschau
+
+# Randomisieren
+randomize.title = Randomisieren
+randomize.title_without = ROMs vorbereiten
+randomize.player = Spieler {nr}  ·  {game}
+randomize.runs = läuft …
+randomize.done = fertig
+randomize.done_seed = fertig  ·  Seed {seed}
+randomize.error = Fehler: {message}
+randomize.missing = Randomizer fehlt ({jar})
+randomize.java_missing = Java fehlt – bitte installieren (Java 8 oder neuer, 64-Bit, adoptium.net)
+randomize.again = Nochmal
+randomize.other_game = Anderes Spiel
+
+# Controller zuordnen
+assignment.press = Drück
+assignment.waits = wartet …
+assignment.join = Beitreten
+assignment.undo = Rückgängig
+assignment.profile = Profil
+assignment.default = Standard
+assignment.new_profile = + Neues Profil
+assignment.create = Anlegen
+assignment.ready = Bereit
+assignment.not_ready = Nicht bereit
+assignment.bind = Anpassen
+assignment.profile_name = Name des neuen Profils
+assignment.profile_example = z. B. Dellyx
+assignment.last = zuletzt
+assignment.delete = Löschen
+assignment.delete_question = „{name}“ löschen?
+assignment.delete_sure = Möchtest du das Profil wirklich löschen?
+# Einrichtungs-Assistent für unbekannte Controller
+wizard.title = Controller einrichten
+wizard.press = Drück:
+wizard.applies_for_all = Gilt danach für alle Controller dieses Typs
+wizard.up = Steuerkreuz hoch
+wizard.down = Steuerkreuz runter
+wizard.left = Steuerkreuz links
+wizard.right = Steuerkreuz rechts
+wizard.south = untere Taste (A)
+wizard.east = rechte Taste (B)
+wizard.west = linke Taste
+wizard.north = obere Taste
+wizard.l = linke Schultertaste (L)
+wizard.r = rechte Schultertaste (R)
+wizard.start = Start
+wizard.select = Select
+
+# Tasten belegen
+keys.title = Tasten belegen
+keys.group_game = Spieltasten
+keys.group_cross = Steuerkreuz
+keys.group_extra = Extras
+keys.title_keyboard = Tastatur belegen
+keys.default = Standard wiederherstellen
+keys.title_profile = Profil „{name}“ belegen
+keys.free = – frei –
+keys.press_now = Drück jetzt die Taste für
+keys.without_press = Ohne Tastendruck bleibt die alte Belegung
+
+# Overlay: Reiter (lang und als Kürzel, wenn es zu eng wird)
+tab.types = Typen
+tab_short.types = TYP
+# Typen-Tabelle
+overlay.against = gegen
+overlay.column = Spalte
+table.1 = 1× normal
+table.2 = sehr effektiv
+table.05 = nicht sehr effektiv
+table.0 = wirkungslos
+# Beschriftung auf Knopf-Symbolen
+button.top = OBEN
+button.up = HOCH
+button.down = RUNTER
+button.left = LINKS
+button.right = RECHTS
+
+# Pokémon-Details (Bausteine für die Reiter der Plugins)
+dex.no_data = Keine Pokédex-Daten für dieses Pokémon
+dex.missing = Pokédex-Daten fehlen: {error}
+dex.loads = Pokédex-Daten werden geladen …
+dex.evolved_to = Entwickelt sich zu {targets}
+dex.evolved_not = Entwickelt sich nicht weiter
+dex.sum = (Summe {sum})
+dex.lv = Lv {level}
+dex.start = Start
+gender.m = (m)
+gender.w = (w)
+value.kp = KP
+value.ang = Ang
+value.vertical = Vert
+value.spang = SpAng
+value.spvert = SpVert
+value.init = Init
+
+# Spieler-Menü
+menu.audio = Spiel
+menu.cross = Touch mit Steuerkreuz
+menu.all = alle
+menu.from = aus
+menu.group_audio = Ton
+menu.group_screen = Bildschirm
+menu.group_more = Mehr
+menu.music = Musik
+menu.view = Ansicht
+menu.swap = Bildschirme tauschen
+menu.overlay = Overlay
+menu.plugins = Plugins
+menu.plugins_inactive = Nicht aktiv
+menu.new_bind = Neu belegen
+menu.save = Speichern
+menu.controller_switch = Controller wechseln
+menu.question_save = Speichern & beenden?
+menu.question_profile = Standard-Profil – neues anlegen?
+# Pause-Menü (Esc)
+# Im Spiel
+game.controller_applied = Controller übernommen: {name}
+game.new_started = Neu gestartet vom letzten Autosave
+game.backup_loaded = Backup-Zustand geladen
+game.ingame_start = Start ab Ingame-Spielstand
+game.fast_forward_locked = Vorspulen ist gerade gesperrt
+plugin.error_session = {name}: Fehler – Plugin aus
+plugin.fits_not = passt nicht zu dieser Sitzung
+plugin.error_reason = Fehler – für diese Sitzung aus
+game.starts = Startet …
+game.crashed = Abgestürzt
+game.crashed_hint = A drücken: Neustart vom letzten Autosave
+game.controller_separated = Controller getrennt
+game.free_controller = A auf einem freien Controller drücken
+game.save = Speichere …
+game.top_large = oben groß
+game.bottom_large = unten groß
+game.swap = tauschen
+game.touch_cross = Touch: Steuerkreuz
+game.playtime = Spielzeit {hours}:{minutes}
+
+# Über
+about.title = Über {name}
+about.author = Ein Couch-Soullink von {author}
+about.software = Verwendete Software
+about.license_texts = Lizenztext mit A öffnen · alle Texte auch im Ordner „licenses“ neben dem Programm
+about.license_show = Lizenz anzeigen
+about.license_missing = Lizenztext nicht gefunden: {file}
+about.page = Blättern
+about.purpose_gba = GBA-Emulation
+about.purpose_nds = NDS-Emulation
+about.purpose_randomizer = Randomizer und Pokédex-Daten
+about.purpose_python = Programmiersprache
+about.purpose_pygame = Fenster, Eingabe, Ton
+about.purpose_numpy = Bild und Ton
+about.purpose_load_font = Schrift
+about.plugins = Plugins
+about.plugin_version = Version {version}
+about.plugin_author = von {author}
+about.plugin_header = Plugin · Version {version} · von {author}
+
+# Bildschirmtastatur und Suche
+osk.tap = Tippen
+osk.delete = Löschen
+osk.empty = Leer
+osk.large = Groß/klein
+osk.search = Suchen
+osk.search_placeholder = Suche
+osk.hit = {count} Treffer
+osk.no_hit = Keine Treffer

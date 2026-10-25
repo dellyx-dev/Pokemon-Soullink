@@ -1,0 +1,45 @@
+_name = Soullink
+_description = Soullink list: every player's catches per location with dead/alive and “not caught”, level cap by badges and the list in the free screen area.
+menu = Soullink
+display = Soullink list
+
+# Tabs
+tab = Soullink
+tab_level = Levels
+tab_short = SLK
+tab_level_short = LVL
+
+# Soullink tab
+catch_location = Location
+no_catches = No catches yet.
+no_catches_2 = Caught Pokémon show up here automatically.
+open = Open
+pokemon = Pokémon
+dead_alive = Dead / Alive
+dead = DEAD
+alive = ALIVE
+nothing_caught = Player {nr} caught nothing here.
+player = Player {nr}
+level = Lv. {level}
+in_team = in party
+box = Box {box}
+location_choose = Not caught · pick the location
+all_locations = You already have a Pokémon entered for every location.
+encounter = Not caught
+encounter_title = Not caught · {location}
+entry_remove = Remove entry
+not_caught_info = Player {nr} didn't catch it here
+x_enter = X enters the Pokémon that got away here.
+
+# Levels tab
+level_gyms = Gyms
+level_gyms_range = Gyms {of}–{until}
+level_top4 = Elite Four
+level_rematch = Elite Four · rematch
+level_arena = Gym {nr}
+level_top4_slot = Elite Four · {nr}
+level_champ = Champion
+level_lv = Lv {level}
+level_cap = Cap
+level_badge = {count} badges
+level_no = No gym leaders found in the Pokédex data.

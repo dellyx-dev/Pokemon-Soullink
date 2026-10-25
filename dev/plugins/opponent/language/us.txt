@@ -1,0 +1,28 @@
+_name = Opponent
+_description = “Opponent” tab in the overlay: the opposing Pokémon in the current battle, live from the game, with the effect of every attacking type and “strong against”; outside battles pick 1–2 types by hand.
+
+# Tab
+tab = Opponent
+tab_short = OPP
+
+# Battle
+no_battle = Not in a battle right now
+battle_loads = Battle in progress – loading Pokédex data …
+battle_error = Battle in progress – Pokédex data missing: {error}
+lv = Lv {level}
+defeated = fainted
+attacken_are = Moves of these types are …
+not_send = Don't send
+not_send_reason = {name} hits them super effectively
+
+# Types by hand
+of_hand = Pick types:
+type = Type
+first_second = 1st/2nd type
+
+# Effect
+level_4 = super effective
+level_2 = effective
+level_05 = not very effective
+level_025 = barely effective
+level_0 = no effect

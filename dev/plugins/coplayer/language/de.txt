@@ -1,0 +1,11 @@
+_name = Mitspieler
+_description = Die anderen Spieler in der eigenen Welt: ihr erstes Pokémon (oder ein Stift in Spielerfarbe) auf der Kachel, auf der sie gerade stehen.
+
+# Spielermenü
+show = Mitspieler zeigen
+no_partner = kein anderer Spieler in derselben Welt
+
+# Hauptmenü
+display = Darstellung
+display_pokemon = Pokémon
+display_stylus = Stift

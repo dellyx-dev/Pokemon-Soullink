@@ -1,0 +1,45 @@
+_name = Soullink
+_description = Soullink-Liste: die Fänge aller Spieler pro Fangort mit Tot/Lebt und „Nicht gefangen“, Level-Cap nach Orden und die Liste im freien Bildfeld.
+menu = Soullink
+display = Soullink-Liste
+
+# Reiter
+tab = Soullink
+tab_level = Level
+tab_short = SLK
+tab_level_short = LVL
+
+# Soullink-Reiter
+catch_location = Fangort
+no_catches = Noch keine Fänge.
+no_catches_2 = Gefangene Pokémon erscheinen hier von selbst.
+open = Öffnen
+pokemon = Pokémon
+dead_alive = Tot / Lebt
+dead = TOT
+alive = LEBT
+nothing_caught = Spieler {nr} hat hier nichts gefangen.
+player = Spieler {nr}
+level = Lv. {level}
+in_team = im Team
+box = Box {box}
+location_choose = Nicht gefangen · Fangort wählen
+all_locations = Für jeden Ort steht schon ein Pokémon von dir drin.
+encounter = Nicht gefangen
+encounter_title = Nicht gefangen · {location}
+entry_remove = Eintrag entfernen
+not_caught_info = Spieler {nr} hat es hier nicht gefangen
+x_enter = X trägt das Pokémon ein, das hier nicht gefangen wurde.
+
+# Level-Reiter
+level_gyms = Arenen
+level_gyms_range = Arenen {of}–{until}
+level_top4 = Top 4
+level_rematch = Top 4 · Revanche
+level_arena = Arena {nr}
+level_top4_slot = Top 4 · {nr}
+level_champ = Champ
+level_lv = Lv {level}
+level_cap = Cap
+level_badge = {count} Orden
+level_no = Keine Arenaleiter in den Pokédex-Daten gefunden.

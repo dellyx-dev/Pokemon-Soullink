@@ -1,0 +1,8 @@
+_name = Link cable GBA
+_description = Link cable between the GBA players: trade and battle in the Cable Club. For this, all GBA players of a session run in one shared process.
+
+# Player menu
+cable = Link cable
+plugged_in = Link cable plugged in – connected to everyone else who plugged in
+pulled = Link cable unplugged
+no_fast_forward = No fast-forward while the link cable is plugged in

@@ -1,0 +1,8 @@
+_name = Link cable NDS
+_description = Local wireless play between the NDS players: trade and battle at the counters in the Pokémon Center. The packets travel via UDP over 127.0.0.1 from player to player.
+
+# Player menu
+cable = Link cable
+plugged_in = Link cable plugged in – connected to everyone else who plugged in
+pulled = Link cable unplugged
+no_fast_forward = No fast-forward while the link cable is plugged in

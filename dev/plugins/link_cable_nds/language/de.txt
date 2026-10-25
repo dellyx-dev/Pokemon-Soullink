@@ -1,0 +1,8 @@
+_name = Linkkabel NDS
+_description = Lokales Drahtlos-Spiel zwischen den NDS-Spielern: tauschen und kämpfen über die Theken im Pokémon-Center. Die Pakete gehen per UDP über 127.0.0.1 von Spieler zu Spieler.
+
+# Spielermenü
+cable = Linkkabel
+plugged_in = Linkkabel eingesteckt – verbunden mit allen, die es auch eingesteckt haben
+pulled = Linkkabel gezogen
+no_fast_forward = Mit Linkkabel geht kein Vorspulen

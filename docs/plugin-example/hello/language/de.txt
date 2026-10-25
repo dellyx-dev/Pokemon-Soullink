@@ -1,0 +1,11 @@
+_name = Hallo
+_description = Beispiel-Plugin: grüßt im Spielermenü, zeigt einen Reiter und die Spielzeit im freien Feld.
+greet = Hallo sagen
+hello = Hallo!
+hello_loud = HALLO!
+loud = Laut grüßen
+tab = Hallo
+tab_short = HAL
+greeted = {count}-mal gegrüßt
+display = Spielzeit in Minuten
+minutes = {minutes} Minuten gespielt

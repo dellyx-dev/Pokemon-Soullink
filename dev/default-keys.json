@@ -1,0 +1,34 @@
+{
+  "_hint": [
+    "Default key binding for new players and for \"Restore default\". Existing sessions keep their own binding.",
+    "Layout: function -> key; several keys as a list, e.g. \"B\": [\"y\", \"z\"]. A function that is missing sits on no key.",
+    "Functions: A B X Y L R START SELECT UP DOWN LEFT RIGHT FAST_FORWARD MENU SWAP TOUCH (X, Y, SWAP and TOUCH only on the NDS).",
+    "Controller keys by position (Xbox label): SOUTH = A, EAST = B, WEST = X, NORTH = Y, L, R, L2, R2, STICK_L = L3, STICK_R = R3, START, SELECT, UP, DOWN, LEFT, RIGHT.",
+    "Keyboard keys with pygame names: a-z, 0-9, up, down, left, right, return, backspace, space, tab, left shift ...",
+    "Own default that survives updates: copy this file into the data folder (beside settings.json) and change it there."
+  ],
+  "controller": {
+    "gba": {
+      "A": "SOUTH", "B": "EAST", "L": "L", "R": "R", "START": "START", "SELECT": "SELECT",
+      "UP": "UP", "DOWN": "DOWN", "LEFT": "LEFT", "RIGHT": "RIGHT",
+      "MENU": "L2", "FAST_FORWARD": "STICK_R"
+    },
+    "nds": {
+      "A": "SOUTH", "B": "EAST", "X": "WEST", "Y": "NORTH", "L": "L", "R": "R", "START": "START", "SELECT": "SELECT",
+      "UP": "UP", "DOWN": "DOWN", "LEFT": "LEFT", "RIGHT": "RIGHT",
+      "MENU": "L2", "FAST_FORWARD": "STICK_R", "TOUCH": "R2", "SWAP": "STICK_L"
+    }
+  },
+  "keyboard": {
+    "gba": {
+      "A": "x", "B": ["y", "z"], "L": "a", "R": "s", "START": "return", "SELECT": "backspace",
+      "UP": "up", "DOWN": "down", "LEFT": "left", "RIGHT": "right",
+      "MENU": "tab", "FAST_FORWARD": "space"
+    },
+    "nds": {
+      "A": "x", "B": ["y", "z"], "X": "c", "Y": "v", "L": "a", "R": "s", "START": "return", "SELECT": "backspace",
+      "UP": "up", "DOWN": "down", "LEFT": "left", "RIGHT": "right",
+      "MENU": "tab", "FAST_FORWARD": "space", "SWAP": "q"
+    }
+  }
+}

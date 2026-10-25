@@ -1,0 +1,14 @@
+_name = Pokédex
+_description = Reiter „Pokédex“ im Overlay: alle Pokémon der eigenen, randomisierten ROM mit Typen, Werten, Entwicklungen und Level-Attacken – sortiert nach Nr. oder A–Z, mit Suche.
+
+# Reiter
+tab = Pokédex
+tab_short = PDX
+
+# Liste und Details
+loads = Pokédex der eigenen ROM wird geladen …
+details = Details
+letter = Buchstabe
+after_nr = Nach Nr.
+a_z = A–Z
+before_back = Vorheriges / Nächstes
