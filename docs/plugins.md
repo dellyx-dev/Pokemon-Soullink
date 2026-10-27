@@ -65,8 +65,9 @@ the rest:
   tab, the first id wins.
 - **Life cycle:** one object lives across games; create all state in `session_start` (the old game's `session_end`
   always runs first). `fits()` and `process_group()` must not keep state; `api.setting()` is `None` in `create()`.
-- **Errors:** an exception in a hook is logged to `error.log`, the plugin is off for the rest of this game and the
-  players see a notice.
+- **Errors:** an exception in a hook is logged to `error.log`, the plugin is switched off (`session_end()` runs) and
+  the players see a notice. A player can restart it under "Plugins" in the player menu (A on the grey row): the worker
+  part is loaded anew and `session_start()` runs again, so the plugin starts with fresh state.
 
 ## GameApi (argument of `session_start`)
 

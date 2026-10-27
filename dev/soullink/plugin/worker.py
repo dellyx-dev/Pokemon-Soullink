@@ -19,23 +19,29 @@ class PluginParts:
 
     def __init__(self, core, job: dict, events, shared: dict | None = None):
         """Loads the worker part of every plugin in the job; a failing part is switched off and reported."""
-        self._events = events
+        self._core, self._job, self._events = core, job, events
         self.shared = {} if shared is None else shared
         self._parts: dict[str, object] = {}
         self._slots: dict[str, int | None] = {}
         self._base = Path(job["base"]) if job.get("base") else paths.base_dir()
         for entry in job.get("plugins") or []:
-            pid, dir = entry["id"], Path(entry["dir"])
-            try:
-                with _IMPORT:
-                    module = import_without_init(dir.parent, pid, entry["module"])
-                part = module.create(core, job, self.shared.setdefault(pid, {}))
-            except Exception:
-                self._events.put(("plugin_error", pid, traceback.format_exc()))
-                continue
-            if part is not None:
-                self._parts[pid] = part
-                self._slots[pid] = entry.get("slot")
+            self.load(entry)
+
+    def load(self, entry: dict) -> None:
+        """Loads the worker part of one plugin ({"id", "dir", "module", "slot"}); a failing part is reported. A part that
+        still runs is ended first (restart)."""
+        pid, dir = entry["id"], Path(entry["dir"])
+        self._disable(pid)
+        try:
+            with _IMPORT:
+                module = import_without_init(dir.parent, pid, entry["module"])
+            part = module.create(self._core, self._job, self.shared.setdefault(pid, {}))
+        except Exception:
+            self._events.put(("plugin_error", pid, traceback.format_exc()))
+            return
+        if part is not None:
+            self._parts[pid] = part
+            self._slots[pid] = entry.get("slot")
 
     def active(self) -> list[str]:
         """Ids of the parts that still run."""
@@ -107,7 +113,7 @@ class PluginParts:
         self._safe(pid, run)
 
     def disable(self, pid: str) -> None:
-        """The main process switched the plugin off for this session."""
+        """The main process switched the plugin off (until load() restarts it)."""
         self._disable(pid)
 
     def end(self) -> None:

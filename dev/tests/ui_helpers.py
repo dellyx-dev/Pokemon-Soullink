@@ -89,6 +89,10 @@ class FakeProcess:
         """Records that a plugin worker part is switched off."""
         self.commands.append(("plugin_disable", plugin_id))
 
+    def plugin_enable(self, entry):
+        """Records that a plugin worker part is loaded anew."""
+        self.commands.append(("plugin_enable", entry["id"]))
+
     def plugin_data(self, slot):
         """Data of a plugin slot."""
         return self.slots.get(slot)

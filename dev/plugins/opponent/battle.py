@@ -22,8 +22,14 @@ def read_battle_ram(blocks: dict[int, bytes], game_code: str) -> list[list[Oppon
 
 
 _G3_BATTLE_MON = 0x58
-_G3_BATTLE_TYPES = ["Normal", "Battle", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", None, "Fire",
-                  "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark"]
+_BATTLE_TYPES = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", None, "Fire",
+                 "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark"]
+
+
+def _battle_types(raw: bytes) -> tuple[str, ...]:
+    """The one or two types of a battle slot (type ids of generations 3/4); unknown ids are left out."""
+    names = (_BATTLE_TYPES[n] if n < len(_BATTLE_TYPES) else None for n in raw)
+    return tuple(dict.fromkeys(name for name in names if name))
 
 
 def _g3_in_battle(blocks: dict[int, bytes], own: set[int], opponent: list[int]) -> dict[int, tuple]:
@@ -41,9 +47,7 @@ def _g3_in_battle(blocks: dict[int, bytes], own: set[int], opponent: list[int]) 
                     kind = struct.unpack_from("<H", data, base)[0]
                     kp, level, max_kp = struct.unpack_from("<HBxH", data, base + 0x28)
                     if kind and 1 <= level <= 100 and kp <= max_kp:
-                        types = (_G3_BATTLE_TYPES[n] if n < len(_G3_BATTLE_TYPES) else None
-                                 for n in data[base + 0x21:base + 0x23])
-                        active[pid] = (level, kp, tuple(dict.fromkeys(t for t in types if t)))
+                        active[pid] = (level, kp, _battle_types(data[base + 0x21:base + 0x23]))
                 place = data.find(struct.pack("<I", pid), place + 1)
     return active
 
@@ -133,8 +137,7 @@ def _nds_battle_slots(ram: bytes, own: set[int], opponent: set[int]) -> dict[int
                     kind, level = struct.unpack_from("<H", ram, s)[0], ram[s + 0x34]
                     kp, max_kp = struct.unpack_from("<iI", ram, s + 0x4C)
                     if 0 < kind <= NDS_MAX_KIND[4] and 1 <= level <= 100 and 0 <= kp <= max_kp < 1000:
-                        types = (_G3_BATTLE_TYPES[n] if n < len(_G3_BATTLE_TYPES) else None for n in ram[s + 0x24:s + 0x26])
-                        active[word(s + _NDS_BATTLE_MON_PID)] = (level, kp, tuple(dict.fromkeys(t for t in types if t)))
+                        active[word(s + _NDS_BATTLE_MON_PID)] = (level, kp, _battle_types(ram[s + 0x24:s + 0x26]))
             place = ram.find(struct.pack("<I", pid), place + 1)
     return active
 

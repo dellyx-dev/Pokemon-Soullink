@@ -498,6 +498,42 @@ def test_hook_error_switches_the_plugin_off_for_the_session(app, tmp_path, hook,
     assert probe.calls.count(("session_end",)) == 1 and other.calls[-1] == ("session_end",)
 
 
+def test_restart_from_the_plugins_submenu(app, tmp_path):
+    """A plugin switched off by an error comes back with A in the "Plugins" submenu: worker part, session_start, tab and
+    display."""
+    probe = _create(app, worker="worker")
+    other = _create(app, "other")
+    bs = _game(app, tmp_path)
+    sp = bs.player[1]
+    probe.throw.add("update")
+    bs.update(0.016)
+    bs.update(0.016)
+    assert [i.id for i, _ in bs.plugins.plugins] == ["other"] and sp.types.find("probe") is None
+    assert all(f.hat("plugin_disable") == [("plugin_disable", "probe")] for f in FakeProcess.instances)
+    assert [a[0] for a in bs.field.show] == ["other.map"]
+    probe.throw.clear()
+    _menu(bs)
+    _choose(bs, 2, "plugins")
+    restart = sp.plugin_rows.index(next(r for r in sp.plugin_rows if r[0].id == "probe"))
+    assert sp.plugin_rows[restart][1].reason == "error – A: restart"
+    sp.menu.selection = restart
+    press(bs, "c1", Key.SOUTH)
+    assert [i.id for i, _ in bs.plugins.plugins] == ["other", "probe"] and bs.plugins.disabled == []
+    assert probe.calls.count(("session_start",)) == 2 and probe.calls.count(("session_end",)) == 1
+    assert all(f.hat("plugin_enable") == [("plugin_enable", "probe")] for f in FakeProcess.instances)
+    assert sp.submenu == "plugins" and "Probe-Action" in sp.menu.entries
+    assert sp.types.find("probe") is not None and [t.plugin_id for t in sp.plugin_tab].count("probe") == 1
+    assert sorted(a[0] for a in bs.field.show) == ["other.map", "probe.map"]
+    bs.update(0.016)
+    assert ("update",) in probe.calls[-3:] and other.calls.count(("session_start",)) == 1
+    probe.throw.add("session_start")
+    probe.throw.discard("update")
+    bs.plugins.disable(bs.plugins._info["probe"], "test")
+    assert not bs.plugins.restart(bs.plugins._info["probe"]) and [i.id for i in bs.plugins.disabled] == ["probe"]
+    bs.leave()
+    assert not bs.plugins.restart(bs.plugins._info["probe"])
+
+
 def test_error_in_session_end_is_called_only_once(app, tmp_path):
     """An error in session_end is handled with a single call."""
     probe = _create(app)
@@ -549,7 +585,7 @@ def test_error_in_switch_and_unknown_symbol(app, tmp_path):
     press(bs, "c1", Key.SOUTH)
     assert bs.plugins.plugins == [] and "broken in Switch" in _log(app)
     assert sp.submenu == "plugins" and sp.menu.entries == ["Probe-Plugin"]
-    assert sp.plugin_rows[0][1].reason == "error – off for this session" and sp.plugin_rows[0][2] == "Not active"
+    assert sp.plugin_rows[0][1].reason == "error – A: restart" and sp.plugin_rows[0][2] == "Not active"
     bs.draw(app.area)
     second = _create(app, "second")
     second.symbol = ["flash", "link"]

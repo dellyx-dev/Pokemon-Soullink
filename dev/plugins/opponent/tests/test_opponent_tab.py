@@ -74,6 +74,20 @@ def test_opponent_in_battle_and_strong_against(opponent_api, monkeypatch):
     assert ["Grass", "Fighting", "Bug"] in shown
 
 
+def test_fighting_opponents_are_drawn(opponent_api):
+    """Fighting opponents (Tyrogue, Croagunk) are drawn, alone and in a double battle."""
+    pygame.font.init()
+    g = OpponentTab(opponent_api, 1)
+    o = TypesOverlay([g, TypesTab()])
+    opponent_api.dex_value = SimpleNamespace(pokemon_after_nr={}, name=lambda nr: "Tyrogue")
+    area = pygame.Surface((1920, 1080))
+    for battle in ([[Opponent(236, 4, 18, True, ("Fighting",))]],
+                   [[Opponent(236, 4, 18, True, ("Fighting",)), Opponent(453, 5, 20, True, ("Poison", "Fighting"))]]):
+        g.battle = battle
+        for range_, pixel in (((0, 0, 1920, 1080), 54), ((0, 0, 480, 720), 24)):
+            o.draw(area, pygame.Rect(range_), pixel)
+
+
 def _drawn_types(module, monkeypatch):
     """All drawn chips as (type, rectangle)."""
     card, original = [], module.draw_type

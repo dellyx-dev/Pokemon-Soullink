@@ -1,4 +1,5 @@
-"""Plugins in the player menu: the "Plugins" submenu (rows, drawing, A/B) and clean-up when a plugin drops out."""
+"""Plugins in the player menu: the "Plugins" submenu (rows, drawing, A/B, restarting a plugin switched off by an error)
+and clean-up when a plugin drops out or comes back."""
 from __future__ import annotations
 
 import pygame
@@ -7,6 +8,8 @@ from ..plugin.api import MenuEntry
 from ..language import t
 from . import graphics
 from .menu import BACK, Menu
+
+RESTART = "_restart"
 
 
 def _nothing() -> None:
@@ -30,9 +33,11 @@ class PluginMenu:
         """(PluginInfo, MenuEntry, group header) rows; empty if there is nothing for this player."""
         plugins = self.game.plugins
         rows = [(info, entry, info.name) for info, list_ in plugins.menu(nr) for entry in list_]
-        inactive = plugins.not_matching + [(info, t("plugin.error_reason")) for info in plugins.disabled]
         rows += [(info, MenuEntry("_inactive", info.name, _nothing, reason=reason), t("menu.plugins_inactive"))
-                   for info, reason in inactive]
+                 for info, reason in plugins.not_matching]
+        rows += [(info, MenuEntry(RESTART, info.name, lambda info=info: plugins.restart(info),
+                                  reason=t("plugin.error_reason")), t("menu.plugins_inactive"))
+                 for info in plugins.disabled]
         return rows
 
     def open_(self, sp, selection: int = 0) -> None:
@@ -48,14 +53,18 @@ class PluginMenu:
         sp.menu_question, sp.submenu = False, "plugins"
 
     def key(self, sp, choice, back: bool) -> None:
-        """A triggers the entry (greyed-out ones do nothing); B or the menu key goes back to "Plugins"."""
+        """A triggers the entry (greyed-out ones do nothing, a plugin switched off by an error is restarted); B or the menu
+        key goes back to "Plugins"."""
         if choice == BACK or back:
             self.game._menu_open(sp, self.game._menu_index(sp, "plugins"))
         elif isinstance(choice, int):
             info, entry, _ = sp.plugin_rows[choice]
-            if entry.reason:
+            if entry.id == RESTART and info in self.game.plugins.disabled:
+                entry.trigger()
+            elif entry.reason:
                 return
-            self.game.plugins.trigger(info, entry)
+            else:
+                self.game.plugins.trigger(info, entry)
             if sp.submenu == "plugins" and sp.menu is not None:
                 self.open_(sp, choice)
 
@@ -99,15 +108,19 @@ class PluginMenu:
                         (left.right + p // 2, row.centery + 1), small, color, "midleft", weight="Medium")
 
     def new_order(self) -> None:
-        """A plugin is off for this session: its tabs, displays and menu entries disappear with the next frame, not in the
-        middle of drawing a menu."""
+        """A plugin is off or restarted: its tabs, displays and menu entries disappear or come back with the next frame, not
+        in the middle of drawing a menu."""
         game = self.game
-        game.plugins.changed = False
+        plugins = game.plugins
+        restarted, plugins.restarted, plugins.changed = plugins.restarted, [], False
+        again = {info.id for info in restarted}
         for sp in game.player:
-            sp.plugin_tab = [r for r in sp.plugin_tab if r.active]
+            sp.plugin_tab = [r for r in sp.plugin_tab if r.active and r.plugin_id not in again] + \
+                plugins.tab(sp.nr, restarted)
             sp.types.tab_set(sp.core_tab + sp.plugin_tab)
             if sp.submenu == "plugins":
                 self.open_(sp, sp.menu.selection)
             elif sp.menu is not None and not sp.menu_question and not sp.submenu:
                 game._menu_open(sp)
-        game.field.show = [a for a in game.field.show if getattr(a[2], "active", True)]
+        game.field.show = [a for a in game.field.show if getattr(a[2], "active", True)
+                           and getattr(a[2], "plugin_id", None) not in again] + plugins.show(restarted)
