@@ -130,6 +130,8 @@ def _loop(core: Core, memory: SharedMemory, parts: PluginParts, job: dict, comma
                 parts.command(command[1], command[2])
             elif kind == "plugin_disable":
                 parts.disable(command[1])
+            elif kind == "plugin_enable":
+                parts.load(command[1])
             elif kind == "end":
                 sram_back_up()
                 parts.end()

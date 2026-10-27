@@ -94,6 +94,25 @@ def test_g4_active_opponent_from_battle_slots():
         [Opponent(325, 2, 14), Opponent(82, 4, 0, True, ("Electric", "Steel"))]]
 
 
+def test_g4_fighting_type_from_battle_slots():
+    """Type id 1 in the battle slot is Fighting (Croagunk in SoulSilver: Poison/Fighting)."""
+    code = "IPGD"
+    buffer = g4_write(bytearray(0x40000), code, 0, team=[pk45(426, 4, "Drifblim", level=8, kp=43)], boxes={})
+    ram = bytearray(0x80000)
+    ram[0x30000:0x70000] = buffer
+    opponent = struct.pack("<II", 6, 1) + pk45(453, 4, "Croagunk", pid=0x77, level=5, kp=20)
+    ram[0x1000:0x1000 + len(opponent)] = opponent
+    ram[0x2000:0x2000 + len(opponent)] = opponent
+    battle = 0x4000
+    struct.pack_into("<I", ram, battle + 0x68, 0x2A6F1C35)
+    struct.pack_into("<H", ram, battle + 0xC0, 453)
+    ram[battle + 0xC0 + 0x24:battle + 0xC0 + 0x26] = bytes([3, 1])
+    ram[battle + 0xC0 + 0x34] = 5
+    struct.pack_into("<iI", ram, battle + 0xC0 + 0x4C, 20, 20)
+    struct.pack_into("<I", ram, battle + 0xC0 + 0x68, 0x77)
+    assert read_battle_ram({0x02000000: bytes(ram)}, code) == [[Opponent(453, 5, 20, True, ("Poison", "Fighting"))]]
+
+
 def test_g4_double_battle_opponents_in_ram():
     """Both opponents of a generation 4 double battle are found in RAM."""
     code = "CPUD"

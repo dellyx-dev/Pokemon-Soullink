@@ -174,8 +174,12 @@ class PlayerProcess:
         self._command("plugin", plugin_id, data)
 
     def plugin_disable(self, plugin_id: str) -> None:
-        """Switches the worker part of a plugin off for the rest of the session."""
+        """Switches the worker part of a plugin off until it is restarted (plugin_enable)."""
         self._command("plugin_disable", plugin_id)
+
+    def plugin_enable(self, entry: dict) -> None:
+        """Loads the worker part of a plugin anew (restart after an error); entry as in the job's "plugins"."""
+        self._command("plugin_enable", entry)
 
     def plugin_data(self, slot: int | None) -> bytes | None:
         """What the worker part last wrote into its shared memory slot; None if nothing yet."""

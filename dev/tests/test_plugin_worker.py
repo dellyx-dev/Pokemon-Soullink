@@ -205,6 +205,22 @@ def test_disable_and_end(tmp_path, memory):
     assert parts.active() == [] and parts.shared["two"]["ended"]
 
 
+def test_load_again_after_disable(tmp_path, memory):
+    """A disabled part can be loaded anew (restart); a running one is ended first."""
+    dir = tmp_path / "plugins"
+    one = _plugin(dir, "one")
+    parts = PluginParts(FakeCore(), {"nr": 1, "plugins": [_entry(one, 0)]}, Events())
+    parts.disable("one")
+    assert parts.active() == []
+    parts.shared["one"]["ended"] = False
+    parts.load(_entry(one, 0))
+    assert parts.active() == ["one"] and parts.shared["one"]["player"] == [1, 1]
+    parts.after_image(memory)
+    assert memory.slot_read(0) is not None
+    parts.load(_entry(one, 0))
+    assert parts.active() == ["one"] and parts.shared["one"]["ended"]
+
+
 def test_worker_loads_without_the_plugin_init(tmp_path):
     """The worker loads a part without running the plugin's __init__."""
     dir = tmp_path / "plugins"

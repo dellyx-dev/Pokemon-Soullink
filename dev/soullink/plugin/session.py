@@ -1,5 +1,5 @@
 """Plugins in the running game: which ones fit the session, distributing the hooks and catching errors (the plugin is
-switched off for the session)."""
+switched off until a player restarts it from the "Plugins" submenu)."""
 from __future__ import annotations
 
 import traceback
@@ -16,7 +16,7 @@ _ERROR = object()
 
 class PluginSession:
     """The active plugins of a game, one per game screen; an exception in a hook (also in tabs, displays, menu entries and
-    the worker part) is logged and switches the plugin off for the session."""
+    the worker part) is logged and switches the plugin off until restart()."""
 
     def __init__(self, active: list[tuple[PluginInfo, object]], session, game_screen):
         """Creates the plugin session for the plugins that fit the session."""
@@ -27,6 +27,7 @@ class PluginSession:
         self.not_matching: list[tuple[PluginInfo, str]] = []
         self.not_responsible: list[PluginInfo] = []
         self.disabled: list[PluginInfo] = []
+        self.restarted: list[PluginInfo] = []
         self.apis: dict[str, GameApi] = {}
         self.changed = False
         self._plugin = {info.id: plugin for info, plugin in active}
@@ -89,6 +90,7 @@ class PluginSession:
             return
         self._from.add(info.id)
         self.disabled.append(info)
+        self.restarted = [i for i in self.restarted if i.id != info.id]
         self.plugins = [(i, p) for i, p in self.plugins if i.id != info.id]
         self.changed = True
         self._report(t("plugin.error_session", name=info.name))
@@ -100,6 +102,28 @@ class PluginSession:
                 self._plugin[info.id].session_end()
             except Exception:
                 error_log(self.base, info.id, traceback.format_exc())
+
+    def restart(self, info: PluginInfo) -> bool:
+        """Switches a plugin that an error switched off on again: its worker part is loaded anew in every player process
+        and session_start() runs again; its tabs and displays come back with the next frame (restarted). Returns True if
+        it runs again."""
+        if self._ended or info.id not in self._from or info.id not in self._plugin:
+            return False
+        self._from.discard(info.id)
+        self.disabled = [i for i in self.disabled if i.id != info.id]
+        order = list(self._info)
+        self.plugins = sorted(self.plugins + [(self._info[info.id], self._plugin[info.id])],
+                              key=lambda entry: order.index(entry[0].id))
+        if info.worker:
+            entry = next(e for e in self.worker_plugins() if e["id"] == info.id)
+            for sp in getattr(self.game, "player", []):
+                sp.process.plugin_enable(entry)
+        self.call(info, "session_start", self._api(info))
+        if not self.active(info.id):
+            return False
+        self.restarted.append(info)
+        self.changed = True
+        return True
 
     def worker_error(self, plugin_id: str, text: str) -> None:
         """Handles the event ("plugin_error", id, traceback) from a player process."""
@@ -134,15 +158,20 @@ class PluginSession:
             previous.end()
         if loader is not None:
             loader.running_session = self
-        for info, plugin in list(self.plugins):
-            api = getattr(plugin, "api", None)
-            if not isinstance(api, PluginApi):
-                api = PluginApi(info.id, info.dir, self.base, self.game.app.settings)
-            self.apis[info.id] = GameApi(api, self.game, self._slots.get(info.id))
-            self.call(info, "session_start", self.apis[info.id])
+        for info, _ in list(self.plugins):
+            self.call(info, "session_start", self._api(info))
         for text in self._hints:
             self._report(text)
         self._hints = []
+
+    def _api(self, info: PluginInfo) -> GameApi:
+        """The GameApi of a plugin, created on first use."""
+        if info.id not in self.apis:
+            api = getattr(self._plugin[info.id], "api", None)
+            if not isinstance(api, PluginApi):
+                api = PluginApi(info.id, info.dir, self.base, self.game.app.settings)
+            self.apis[info.id] = GameApi(api, self.game, self._slots.get(info.id))
+        return self.apis[info.id]
 
     def save(self) -> None:
         """Calls the save hook of all plugins."""
@@ -198,10 +227,14 @@ class PluginSession:
         """Reads the state of a menu entry's switch protected against errors."""
         return bool(self._safe(info, entry.switch, False)) if entry.switch is not None else False
 
-    def tab(self, nr: int) -> list:
-        """Overlay tabs of all plugins for a player, protected against errors (ProtectedTab)."""
+    def _of(self, only: list[PluginInfo] | None) -> list[tuple[PluginInfo, object]]:
+        """The active plugins, limited to the ones in only if given."""
+        return [(info, plugin) for info, plugin in self.plugins if only is None or info.id in {i.id for i in only}]
+
+    def tab(self, nr: int, only: list[PluginInfo] | None = None) -> list:
+        """Overlay tabs of all plugins (or the ones in only) for a player, protected against errors (ProtectedTab)."""
         result = []
-        for info, plugin in list(self.plugins):
+        for info, plugin in self._of(only):
             def fetch(plugin=plugin, info=info):
                 """Reads the overlay tabs from the plugin and wraps them."""
                 return [ProtectedTab(self, info, r) for r in list(plugin.overlay_tab(nr) or [])]
@@ -216,11 +249,11 @@ class PluginSession:
             self._reported.add((plugin_id, tab.id, reason))
             error_log(self.base, plugin_id, f'Tab "{tab.id}" not in the overlay: {reason}')
 
-    def show(self) -> list[tuple[str, str, object]]:
-        """("<id>.<display>", title, display) of all plugins for the free field, protected against errors
-        (ProtectedDisplay)."""
+    def show(self, only: list[PluginInfo] | None = None) -> list[tuple[str, str, object]]:
+        """("<id>.<display>", title, display) of all plugins (or the ones in only) for the free field, protected against
+        errors (ProtectedDisplay)."""
         result = []
-        for info, plugin in list(self.plugins):
+        for info, plugin in self._of(only):
             def fetch(plugin=plugin, info=info):
                 """Reads the displays from the plugin and wraps them."""
                 list_ = []
